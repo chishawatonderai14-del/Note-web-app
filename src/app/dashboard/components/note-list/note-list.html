@@ -1,0 +1,9 @@
+<div class="note-list">
+    @if (notes.length > 0){
+        <div *ngFor="let value of notes">
+            <app-note [note]="value"></app-note>
+        </div>
+    }@else {
+        <app-empty-note></app-empty-note>
+    }
+</div>

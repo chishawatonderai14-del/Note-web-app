@@ -1,0 +1,5 @@
+.trash {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0 0 0;
+}

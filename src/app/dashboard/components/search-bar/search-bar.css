@@ -1,0 +1,23 @@
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+}
+.search-box input {
+
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #CBD5E1;
+    background-color: #F1F5F9;
+    border-radius: 24px;
+    color: #94A3B8;
+    outline: none;
+    width: 100%;
+}
+.search-box img {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 10px;
+
+}

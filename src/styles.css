@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+body, p, h1, h2, h3, h4, h5, h6, label {
+    margin: 0;
+    padding: 0;
+}
+input, textarea {
+    font-size: 16px;
+}
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
