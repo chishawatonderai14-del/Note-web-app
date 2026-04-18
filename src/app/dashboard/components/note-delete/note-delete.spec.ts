@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NoteDelete } from './note-delete';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('NoteDelete', () => {
   let component: NoteDelete;
@@ -8,7 +10,11 @@ describe('NoteDelete', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoteDelete]
+      imports: [NoteDelete],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     })
     .compileComponents();
 

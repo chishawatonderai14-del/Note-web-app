@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NoteHeading } from './note-heading';
 
 describe('NoteHeading', () => {
@@ -19,5 +18,12 @@ describe('NoteHeading', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should contain', () => {
+    component.heading = 'Shopping';
+    fixture.detectChanges();
+     
+    const compiled = fixture.nativeElement;
+    expect(compiled.textContent).toBe('Shopping');
   });
 });

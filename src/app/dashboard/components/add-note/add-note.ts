@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgClass } from "@angular/common";
 import { Overlay } from '@angular/cdk/overlay';
 import { AddNoteModel } from '../add-note-model/add-note-model';
 import { ComponentPortal } from '@angular/cdk/portal';

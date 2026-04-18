@@ -1,9 +1,10 @@
 <div class="note-list">
-    @if (notes.length > 0){
-        <div *ngFor="let value of notes">
+    <div *ngIf="notes.length > 0">
+        <div class="note-list-item" *ngFor="let value of notes">
             <app-note [note]="value"></app-note>
         </div>
-    }@else {
+    </div>
+    <div *ngIf="notes.length == 0">
         <app-empty-note></app-empty-note>
-    }
+    </div>
 </div>

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddNoteModel } from './add-note-model';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('AddNoteModel', () => {
   let component: AddNoteModel;
@@ -8,7 +10,11 @@ describe('AddNoteModel', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddNoteModel]
+      imports: [AddNoteModel],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     })
     .compileComponents();
 
