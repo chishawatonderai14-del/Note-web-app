@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from "../note/note";
 import { NoteService } from '../../services/note-service';
-import { NoteType } from '../../models/note_model';
+import { NoteType} from '../../models/note_model';
 import { CommonModule } from '@angular/common';
 import { EmptyNote } from "../empty-note/empty-note";
 
@@ -15,8 +15,8 @@ import { EmptyNote } from "../empty-note/empty-note";
 export class NoteList implements OnInit{
   constructor(private noteService: NoteService) {}
   ngOnInit(): void {
-    this.noteService.getNotes().subscribe((data) => {
-      this.notes = data;
+    this.noteService.currentNotes$.subscribe((notes) => {
+      this.notes = notes;
     });
   }
   notes!: NoteType[];

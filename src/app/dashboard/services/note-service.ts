@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NoteType } from '../models/note_model';
+import { NoteRequestType, NoteType } from '../models/note_model';
+import { NotesResponseType } from '../models/note_model';
+import { NoteResponseType } from '../models/note_model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -8,47 +10,30 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NoteService {
   constructor(private http: HttpClient){}
+  private apiUrl = 'http://192.168.200.166:3000/api';
   private notes = new BehaviorSubject<NoteType[]>([]);
   currentNotes$ = this.notes.asObservable();
-  refresh(){
-    localStorage.removeItem("notes");
-    this.loadFromJson();
-  }
 
-  loadNotes(){
-    const storedNotes = localStorage.getItem("notes");
-    if (storedNotes) {
-      this.notes.next(JSON.parse(storedNotes));
-      return;
-    }
-    this.loadFromJson();
-  }
-
-  private loadFromJson(){
-    this.http.get<NoteType[]>('/assets/data.json').subscribe(data => {
-      this.notes.next(data);
-      localStorage.setItem("notes", JSON.stringify(data));
+  loadNotes() {
+    this.getNotes().subscribe((data) => {
+      this.notes.next(data.notes)
     });
   }
+  
   getNotes() {
-    localStorage.setItem("notes", JSON.stringify(this.notes.getValue()));
-    return this.currentNotes$;
+    return this.http.get<NotesResponseType>(`${this.apiUrl}/get-notes`);
+  }
+  
+  createNote(note: NoteRequestType){
+    return this.http.post<NoteResponseType>(`${this.apiUrl}/create-note`, note);
+   }
+
+  deleteNote(id: string){
+    return this.http.delete<NoteResponseType>(`${this.apiUrl}/delete-note/${id}`);
   }
   getColor(){
     const colors = ["blue", "green", "yellow", "purple"];
     return colors[Math.floor(Math.random() * colors.length)];
   }
-  addNote(note: NoteType){
-    const currentNotes = this.notes.getValue();
-    this.notes.next([...currentNotes, note]);
-    localStorage.setItem("notes", JSON.stringify(this.notes.getValue()));
-  }
-  deleteNote(id: number){
-    const currentNotes = this.notes.getValue();
-    this.notes.next(currentNotes.filter((note) => note.id !== id));
-    localStorage.setItem("notes", JSON.stringify(this.notes.getValue()));
-  }
-  getNextId(){
-    return this.notes.getValue().length > 0 ? Math.max(...this.notes.getValue().map(n => n.id)) + 1 : 1;
-  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, resource } from '@angular/core';
 import { NoteService } from '../../services/note-service';
 
 @Component({
@@ -9,9 +9,17 @@ import { NoteService } from '../../services/note-service';
 })
 export class NoteDelete {
   constructor(private noteService: NoteService){}
-  @Input() noteId!: number;
+  @Input() noteId!: string;
   
   delete() {
-    this.noteService.deleteNote(this.noteId);
+    this.noteService.deleteNote(this.noteId).subscribe({
+      next: (res) => {
+        console.log(res.message);
+        this.noteService.loadNotes();
+      },
+      error: (err) => {
+        console.log(`Failed to delete note. Error: ${err.message}`);
+      }
+    });
   }
 }

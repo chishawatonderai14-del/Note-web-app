@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NoteType } from '../../models/note_model';
+import { NoteRequestType } from '../../models/note_model';
 import { NoteService } from '../../services/note-service';
 import { Subject } from 'rxjs';
 
@@ -15,14 +15,19 @@ import { Subject } from 'rxjs';
 export class AddNoteModel {
   constructor(private noteService: NoteService) {}
   close$ = new Subject<void>();
-  note : NoteType = {
+  note : NoteRequestType = {
     heading: '',
-    note: '',
-    id: -1
+    note: ''
   }
   addNote(){
-    this.note.id = this.noteService.getNextId();
-    this.noteService.addNote(this.note);
+    this.noteService.createNote(this.note).subscribe({
+      next: (res) => {
+        this.noteService.loadNotes();
+      },
+      error: (err => {
+        console.log(err.message);
+      })
+    });
     this.close();
   }
   close(){

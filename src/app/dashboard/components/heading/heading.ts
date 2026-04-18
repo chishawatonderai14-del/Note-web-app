@@ -9,8 +9,4 @@ import { NoteService } from '../../services/note-service';
   styleUrl: './heading.css',
 })
 export class Heading {
-  constructor(private noteService: NoteService) {}
-  refresh(){
-    this.noteService.refresh();
-  }
 }
