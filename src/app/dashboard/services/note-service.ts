@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NoteRequestType, NoteType } from '../models/note_model';
+import { NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,9 +31,16 @@ export class NoteService {
   deleteNote(id: string){
     return this.http.delete<NoteResponseType>(`${this.apiUrl}/delete-note/${id}`);
   }
-  getColor(){
-    const colors = ["blue", "green", "yellow", "purple"];
-    return colors[Math.floor(Math.random() * colors.length)];
+  formatContent(content: string){
+    if(content.length > 28){
+      content = content.slice(0, 28);
+      content += "...";
+    }
+    return content;
   }
-
+  pinNote(note: pinNoteType){
+    return this.http.put<pinNoteResponseType>(`${this.apiUrl}/pin-note`, note).pipe(
+      map(res => res.message)
+    );
+  }
 }

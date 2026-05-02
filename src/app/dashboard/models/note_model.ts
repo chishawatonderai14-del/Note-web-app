@@ -8,9 +8,10 @@ export interface NoteType{
     title: string;
     content: string;
     icon: string;
+    pinned: boolean;
     category: string;
     createdAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
 }
 export interface NoteResponseType {
     message: string;
@@ -18,4 +19,11 @@ export interface NoteResponseType {
 }
 export interface NotesResponseType {
     notes: NoteType[];
+}
+export interface pinNoteType {
+    noteId: number;
+    pinned: boolean;
+}
+export interface pinNoteResponseType {
+    message: string;
 }

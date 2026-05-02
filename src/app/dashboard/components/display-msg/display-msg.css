@@ -1,0 +1,12 @@
+.msg-body {
+    display: flex;
+    background-color: white;
+    gap: 10px;
+    box-shadow: 0 0 4px #ddffe0;
+    padding: 10px 14px;
+    border-radius: 24px;
+}
+.msg-body p {
+    font-family: inter;
+    font-size: 14px;
+}
