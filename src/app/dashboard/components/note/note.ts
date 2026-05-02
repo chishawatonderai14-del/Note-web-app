@@ -9,7 +9,7 @@ import { NoteService } from '../../services/note-service';
 @Component({
   selector: 'app-note',
   standalone: true,
-  imports: [NoteContent, NoteDelete, NoteHeading, NgClass],
+  imports: [NoteContent, NoteHeading],
   templateUrl: './note.html',
   styleUrl: './note.css',
 })
