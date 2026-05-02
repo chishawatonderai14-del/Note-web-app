@@ -7,6 +7,7 @@ export interface NoteType{
     id: string;
     title: string;
     content: string;
+    icon: string;
     category: string;
     createdAt: Date;
     updateAt: Date;
