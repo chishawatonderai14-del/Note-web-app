@@ -4,10 +4,11 @@
     align-items: center;
     font-family: inter;
 }
-.heading h1 {
-    color: #0F172A;
-    font-size: 30px;
+.heading h4 {
+    color: #6F3FBF;
+    font-size: 20px;
+    font-weight: 900;
 }
 .heading img {
-    width: 30px;
+    width: 25px;
 }
