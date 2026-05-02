@@ -7,7 +7,7 @@ import { AddNote } from "../components/add-note/add-note";
 @Component({
   selector: 'app-layout-shell',
   standalone: true,
-  imports: [Heading, SearchBar, NoteList, AddNote],
+  imports: [Heading, NoteList, AddNote],
   templateUrl: './layout-shell.html',
   styleUrl: './layout-shell.css',
 })

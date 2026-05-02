@@ -1,12 +1,15 @@
 export interface NoteRequestType {
-    heading: string;
-    note: string;
+    title: string;
+    content: string;
+    category: string;
 }
 export interface NoteType{
     id: string;
-    heading: string;
+    title: string;
     content: string;
+    category: string;
     createdAt: Date;
+    updateAt: Date;
 }
 export interface NoteResponseType {
     message: string;

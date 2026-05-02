@@ -7,10 +7,10 @@
     </div>
     <div class="form" >
         <div class="input">
-            <input type="text" placeholder="Heading" [(ngModel)]="note.heading">
+            <input type="text" placeholder="Heading" [(ngModel)]="note.title">
         </div>
        <div class="input">
-         <textarea name="note" placeholder="Write your note..." [(ngModel)]="note.note"></textarea>
+         <textarea name="note" placeholder="Write your note..." [(ngModel)]="note.content"></textarea>
        </div>
        <button (click)="addNote()">
             <img src="/assets/plus.svg" > Add Note

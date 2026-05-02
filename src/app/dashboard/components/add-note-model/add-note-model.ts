@@ -16,8 +16,9 @@ export class AddNoteModel {
   constructor(private noteService: NoteService) {}
   close$ = new Subject<void>();
   note : NoteRequestType = {
-    heading: '',
-    note: ''
+    title: '',
+    content: 'Work',
+    category: ''
   }
   addNote(){
     this.noteService.createNote(this.note).subscribe({

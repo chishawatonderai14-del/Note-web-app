@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NoteService {
   constructor(private http: HttpClient){}
-  private apiUrl = 'http://192.168.200.166:3000/api';
+  private apiUrl = 'http://192.168.200.166:3002/api';
   private notes = new BehaviorSubject<NoteType[]>([]);
   currentNotes$ = this.notes.asObservable();
 

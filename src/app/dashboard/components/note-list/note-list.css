@@ -7,3 +7,8 @@
     width: 100%;
     gap: 10px;
 }
+h3 {
+    font-family: inter;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
