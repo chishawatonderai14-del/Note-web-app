@@ -18,6 +18,7 @@ export class NoteList implements OnInit{
     this.noteService.currentNotes$.subscribe((notes) => {
       this.notes = notes;
     });
+    
   }
   notes!: NoteType[];
 }

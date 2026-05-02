@@ -9,6 +9,7 @@ export interface NoteType{
     content: string;
     icon: string;
     pinned: boolean;
+    trash: boolean;
     category: string;
     createdAt: Date;
     updatedAt: Date;
@@ -26,4 +27,8 @@ export interface pinNoteType {
 }
 export interface pinNoteResponseType {
     message: string;
+}
+export interface EmptyStateMessageType {
+    heading: string;
+    text: string;
 }

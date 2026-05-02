@@ -1,0 +1,29 @@
+.nav-bar {
+    margin: 20px 0;
+    padding: 10px 14px;
+    background-color: #F8F7FB;
+    border-radius: 8px;
+    display: flex;
+    gap: 2%;
+    box-shadow: 0 0 7px #e5e1f9;
+    justify-content: space-around;
+}
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    width: 32%;
+    border-radius: 24px;
+    font-family: inter;
+    font-size: 15px;
+}
+
+.active {
+    background-color: #6F3FBF;
+    color: white;
+}
+.disabled {
+    background-color: none;
+    color: black;
+}
