@@ -1,0 +1,9 @@
+.note-list{
+    scrollbar-width: none;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    overflow-y: auto;
+    height: 70vh;
+    width: 100%;
+    gap: 10px;
+}

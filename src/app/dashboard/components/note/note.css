@@ -1,0 +1,23 @@
+.note {
+    font-family: inter, sans-serif;
+    margin-bottom: 20px;
+    border-radius: 9px;
+    padding: 12px 14px;
+}
+.purple {
+    box-shadow: 0 0 8px #a699f5;
+    background-color: #a699f5;
+}
+.yellow {
+    box-shadow: 0 0 8px #fcf794;
+    background-color: #fcf794;
+
+}
+.blue {
+    box-shadow: 0 0 8px #a6c4fd;
+    background-color: #a6c4fd;
+}
+.green {
+    box-shadow: 0 0 8px #9cefbc;
+    background-color: #9cefbc;
+}

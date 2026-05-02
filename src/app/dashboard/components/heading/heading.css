@@ -1,0 +1,13 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inter;
+}
+.heading h1 {
+    color: #0F172A;
+    font-size: 30px;
+}
+.heading img {
+    width: 30px;
+}

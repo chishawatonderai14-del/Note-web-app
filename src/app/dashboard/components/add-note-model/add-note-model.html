@@ -1,0 +1,19 @@
+<div class="add-note">
+    <div class="heading">
+        <h2>Add New Note</h2> 
+        <div class="close" (click)="close()">
+            <img src="/assets/x.svg" > 
+        </div>    
+    </div>
+    <div class="form" >
+        <div class="input">
+            <input type="text" placeholder="Heading" [(ngModel)]="note.heading">
+        </div>
+       <div class="input">
+         <textarea name="note" placeholder="Write your note..." [(ngModel)]="note.note"></textarea>
+       </div>
+       <button (click)="addNote()">
+            <img src="/assets/plus.svg" > Add Note
+        </button>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    color: #0F172A;
+    font-size: 12px;
+
+}
+.heading img {
+    width: 20px;
+}

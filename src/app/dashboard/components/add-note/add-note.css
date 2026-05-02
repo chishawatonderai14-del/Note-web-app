@@ -1,0 +1,14 @@
+.add-note {
+    background-color: rgb(59, 59, 59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    margin-right: 20px;
+    position: absolute;
+    z-index: 1000;
+    height: 60px;
+    width: 60px;
+    bottom: 8%;
+    right: 0;
+}
