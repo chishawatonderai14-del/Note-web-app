@@ -32,3 +32,11 @@ export interface EmptyStateMessageType {
     heading: string;
     text: string;
 }
+export interface categoryType {
+    icon: string;
+    category: string;
+    noteCount: number;
+}
+export interface categoryResponseType {
+    categories: categoryType[];
+}

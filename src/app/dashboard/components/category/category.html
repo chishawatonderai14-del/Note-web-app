@@ -1,0 +1,21 @@
+<div class="category">
+    <app-heading [heading]="title"></app-heading>
+    <app-search-bar [searchMsg]="searchValue"></app-search-bar>
+    <div class="category-list" >
+        <div class="category-item" *ngFor="let category of categories">
+            <div class="category-icon" [ngClass]="category.icon + '-icon'">
+                <img src="/assets/{{category.icon}}.svg">
+            </div>
+            <div class="category-text">
+                {{category.category}}
+            </div>
+            <div class="category-count">{{category.noteCount}} notes</div>
+        </div>
+    </div>
+    <div class="add-category">
+        <div class="add">
+            <img src="/assets/plus.svg" >    
+        </div>
+        <h5>Create New Category</h5>
+    </div>
+</div>

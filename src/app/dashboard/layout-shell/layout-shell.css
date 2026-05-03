@@ -1,7 +1,14 @@
-.home {
+.shell {
+    display: flex;
+    flex-direction: column;
     background-color: #F8FAFC;
     overflow-y: hidden;
-    padding: 20px; 
-    height: 100%;
     width: 100%;
+    position: absolute;
+}
+.home {
+    display: flex;
+    padding: 20px; 
+    flex-direction: column;
+    flex: 1;
 }

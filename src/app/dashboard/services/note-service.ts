@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
+import { categoryResponseType, categoryType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
 import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
@@ -93,5 +93,7 @@ export class NoteService {
   reloadStateMsg(){
     this.stateMsg.next(this.getStateMessage(this.noteState.getValue()));
   }
-
+  getCategories(){
+    return this.http.get<categoryResponseType>(`${this.apiUrl}/get-categories`);
+  }
 }
