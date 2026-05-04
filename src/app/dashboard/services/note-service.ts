@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { categoryResponseType, categoryType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
+import { categoryResponseType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
 import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
@@ -10,10 +10,12 @@ import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
 })
 export class NoteService {
   constructor(private http: HttpClient){}
-  private apiUrl = 'http://192.168.200.166:3002/api';
+  private apiUrl = 'http://192.168.200.166:3004/api';
   private notes = new BehaviorSubject<NoteType[]>([]);
   private noteState = new BehaviorSubject<string>('');
   private stateMsg = new BehaviorSubject<EmptyStateMessageType>({heading: "No notes yet!", text: 'Start by creating you first note.'});
+  private page = new BehaviorSubject<string>('home');
+  currentPage$ = this.page.asObservable();
   currentStateMsg$ = this.stateMsg.asObservable();
   currentNoteState$ = this.noteState.asObservable();
   currentNotes$ = combineLatest([
@@ -33,6 +35,7 @@ export class NoteService {
     })
   );
   loadNotes() {
+    this.loadPage();
     this.getNoteState();
     this.getNotes().subscribe((data) => {
       this.notes.next(data.notes)
@@ -76,7 +79,7 @@ export class NoteService {
   }
   pinNote(note: pinNoteType){
     return this.http.put<pinNoteResponseType>(`${this.apiUrl}/pin-note`, note).pipe(
-      map(res => res.message)
+      map(res => res?.message)
     );
   }
   getStateMessage(state: string){
@@ -95,5 +98,18 @@ export class NoteService {
   }
   getCategories(){
     return this.http.get<categoryResponseType>(`${this.apiUrl}/get-categories`);
+  }
+  setPage(page: string){
+    this.page.next(page);
+    localStorage.setItem('page', page);
+  }
+  loadPage(){
+    let page = localStorage.getItem('page');
+    if (!page) page = 'home';
+    this.page.next(page);
+    
+  }
+  formatNoteTime(){
+
   }
 }

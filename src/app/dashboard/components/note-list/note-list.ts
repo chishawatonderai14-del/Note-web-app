@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Note } from "../note/note";
 import { NoteService } from '../../services/note-service';
 import { NoteType} from '../../models/note_model';

@@ -1,9 +1,12 @@
 .note-list{
+    display: flex;
+    flex-direction: column;
     scrollbar-width: none;
     padding-bottom: 15px;
     margin-top: 10px;
+    max-height: 65vh;
     overflow-y: auto;
-    height: 70vh;
+    flex: 1;
     width: 100%;
     gap: 10px;
 }

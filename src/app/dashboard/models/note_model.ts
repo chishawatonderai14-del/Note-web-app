@@ -19,6 +19,7 @@ export interface NoteResponseType {
     note: NoteType;
 }
 export interface NotesResponseType {
+    message: string;
     notes: NoteType[];
 }
 export interface pinNoteType {
@@ -38,5 +39,6 @@ export interface categoryType {
     noteCount: number;
 }
 export interface categoryResponseType {
+    message: string;
     categories: categoryType[];
 }

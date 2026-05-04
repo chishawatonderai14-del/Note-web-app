@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { categoryType } from '../../models/note_model';
 import { NoteService } from '../../services/note-service';
 import { CommonModule } from "@angular/common";
-import { Heading } from "../heading/heading";
-import { SearchBar } from "../search-bar/search-bar";
+import { Heading } from '../../components/heading/heading';
+import { SearchBar } from '../../components/search-bar/search-bar';
 
 @Component({
   selector: 'app-category',

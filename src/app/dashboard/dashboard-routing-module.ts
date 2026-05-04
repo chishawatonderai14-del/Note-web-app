@@ -4,13 +4,25 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'shell',
-    pathMatch: 'full'
-  },
-  {
-    path: 'shell',
     loadComponent: () => 
-      import('./layout-shell/layout-shell').then((m) => m.LayoutShell)
+      import('./layout-shell/layout-shell').then((m) => m.LayoutShell),
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        loadComponent: () => 
+          import('./pages/home/home').then((m) => m.Home)
+      },
+      {
+        path: 'category',
+        loadComponent: () => 
+          import('./pages/category/category').then((m) => m.Category)
+      }
+    ]
   }
 ];
 

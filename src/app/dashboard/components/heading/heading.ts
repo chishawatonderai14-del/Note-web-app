@@ -24,7 +24,11 @@ export class Heading {
     const portal = new ComponentPortal(BottomNav);
     const componentRef = overlayRef.attach(portal);
     overlayRef.backdropClick().subscribe(res => {
-      overlayRef.dispose()
+      overlayRef.dispose();
     });
+    componentRef.instance.close$.subscribe(res => {
+      console.log(res);
+      overlayRef.dispose();
+    })
   }
 }

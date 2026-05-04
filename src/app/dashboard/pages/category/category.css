@@ -1,5 +1,9 @@
 .category {
     font-family: inter;
+    display: flex;
+    padding: 20px; 
+    flex-direction: column;
+    flex: 1;
 }
 .category-heading {
     display: flex;

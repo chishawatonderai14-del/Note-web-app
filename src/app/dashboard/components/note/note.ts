@@ -34,7 +34,7 @@ export class Note implements OnInit{
       },
       error: (err) => {
         this.note.pinned = !this.note.pinned;
-        console.log(err?.message);
+        console.log(err.message);
       }
     });
   }
