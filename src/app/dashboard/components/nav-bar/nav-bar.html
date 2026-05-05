@@ -1,11 +1,16 @@
 <div class="nav-bar">
-    <div class="nav" [ngClass]="{active: value == 'all notes'}" (click)="changeNav('all notes')">
-        <p>All Notes</p>
-    </div>
-    <div class="nav" [ngClass]="{active: value == 'favourites'}" (click)="changeNav('favourites')">
-        <p>Favourites</p>
-    </div>
-    <div class="nav" (click)="changeNav('trash')" [ngClass]="{active: value == 'trash'}" >
-        <p>Trash</p>
-    </div>
+  <!--  moving indicator -->
+  <div class="indicator" [style.transform]="getTransform()"></div>
+
+  <div class="nav" (click)="changeNav('all notes')" [ngClass]="{active: value === 'all notes'}">
+    <p>All Notes</p>
+  </div>
+
+  <div class="nav" (click)="changeNav('favourites')" [ngClass]="{active: value === 'favourites'}">
+    <p>Favourites</p>
+  </div>
+
+  <div class="nav" (click)="changeNav('trash')" [ngClass]="{active: value === 'trash'}">
+    <p>Trash</p>
+  </div>
 </div>

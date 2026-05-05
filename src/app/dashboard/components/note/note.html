@@ -1,12 +1,16 @@
 <div class="note">
     <div class="left-section">
-        <div class="icon" [ngClass]="note.icon + '-icon' "><img src="/assets/{{note.icon}}.svg"></div>
+        <div class="icon" [ngClass]="note.icon + '-icon' ">
+            <svg class="icon-svg">
+                <use [attr.href]="'/assets/icons.svg#' + note.icon"></use>
+            </svg>
+        </div>
     </div>
     <div class="right-section">
         <div class="right-left">
             <div>
                 <app-note-heading [heading]="note.title"></app-note-heading>
-                <app-note-content [data]="note.content"></app-note-content>
+                <app-note-content [data]="content"></app-note-content>
             </div>
             <div class="bottom-section">
                 <div class="category" [ngClass]="note.icon + '-text-bg'">
@@ -16,11 +20,11 @@
         </div>
         <div class="right-right">
             @if(note.pinned){
-                <img src="/assets/pinned.svg" (click)="pin()">
+                <img src="/assets/favourite.svg" (click)="pin()" >
             }@else {
                 <img src="/assets/star.svg" (click)="pin()" >
             }
-            <p>{{note.updatedAt}}</p>
+            <p>{{time}}</p>
         </div>
     </div>
 </div>

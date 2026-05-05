@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Note } from "../note/note";
 import { NoteService } from '../../services/note-service';
 import { NoteType} from '../../models/note_model';
@@ -13,12 +13,17 @@ import { EmptyNote } from "../empty-note/empty-note";
   styleUrl: './note-list.css',
 })
 export class NoteList implements OnInit{
-  constructor(private noteService: NoteService) {}
+  noteService = inject(NoteService);
   ngOnInit(): void {
     this.noteService.currentNotes$.subscribe((notes) => {
       this.notes = notes;
+      console.log(this.notes);
     });
     
   }
   notes!: NoteType[];
+  state$ = this.noteService.currentNoteState$ ;
+  trackById(index: number, note: any){
+    return note.id;
+  }
 }

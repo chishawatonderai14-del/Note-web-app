@@ -21,22 +21,24 @@ import { compileNgModule } from '@angular/compiler';
 export class Note implements OnInit{
   constructor(private noteService: NoteService, private overlay: Overlay) {}
   ngOnInit(): void {
-    this.note.content = this.noteService.formatContent(this.note.content);
+    this.content = this.noteService.formatContent(this.note.content);
+    this.time = this.formatTime(this.note.updatedAt);
   }
   @Input() note!: NoteType;
   color!: string;
+  time!: string;
+  content!: string;
+  formatTime(date: string){
+    return this.noteService.formatNoteTime(date);
+  }
   pin(){
     this.note.pinned = !this.note.pinned;
-    this.noteService.pinNote({noteId: parseInt(this.note.id), pinned: !this.note.pinned}).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.sendMessage(res);
-      },
-      error: (err) => {
-        this.note.pinned = !this.note.pinned;
-        console.log(err.message);
-      }
-    });
+    if (this.note.pinned){
+      this.sendMessage('Note unpinned Successfully');
+    }else {
+      this.sendMessage("Note pinned Successfully");
+    }
+    this.noteService.pinNote({noteId: parseInt(this.note.id), pinned: !this.note.pinned});
   }
   sendMessage(message: string){
     const overlayRef = this.overlay.create({

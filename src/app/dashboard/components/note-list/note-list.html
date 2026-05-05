@@ -1,11 +1,32 @@
 <h3>Notes</h3>
 <div #scrollContainer class="note-list">
     <div *ngIf="notes.length > 0">
-        <div class="note-list-item" *ngFor="let value of notes">
+        <div class="note-list-item" *ngFor="let value of notes; trackBy: trackById">
             <app-note [note]="value"></app-note>
         </div>
     </div>
-    <div *ngIf="notes.length == 0">
-        <app-empty-note></app-empty-note>
+    <div *ngIf="state$ | async as state ">
+        <div *ngIf="notes.length == 0" >
+            <div [ngSwitch]="state">
+                <div *ngSwitchCase="'trash'">
+                    <app-empty-note [message]="{
+                        heading: 'Bin is empty!',
+                        text: 'Start by deleting your first note.'
+                    }"></app-empty-note>
+                </div>
+                <div *ngSwitchCase="'all notes'">
+                    <app-empty-note [message]="{
+                        heading: 'No notes yet!',
+                        text: 'Start by creating your first note.'
+                    }"></app-empty-note>
+                </div>
+                <div *ngSwitchCase="'favourites'">
+                    <app-empty-note [message]="{
+                        heading: 'No notes yet!',
+                        text: 'Start by liking your first note.'
+                    }"></app-empty-note>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

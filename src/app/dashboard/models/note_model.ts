@@ -11,15 +11,14 @@ export interface NoteType{
     pinned: boolean;
     trash: boolean;
     category: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }
 export interface NoteResponseType {
     message: string;
     note: NoteType;
 }
 export interface NotesResponseType {
-    message: string;
     notes: NoteType[];
 }
 export interface pinNoteType {

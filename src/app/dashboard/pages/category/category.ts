@@ -16,15 +16,12 @@ export class Category implements OnInit{
   title : string = "Categories";
   searchValue = "Search categories...";
   ngOnInit(): void {
-    this.noteService.getCategories().subscribe({
-      next: (categoryList) => {
-        this.categories = categoryList.categories;
-        console.log(categoryList)
-      }, 
-      error: (err) => {
-        console.log(err);
-      }
-    });
+    this.categoryHelper();
   }
   categories !: categoryType[];
+  categoryHelper(){
+    this.noteService.currentCategories$.subscribe(res => {
+      this.categories = res;
+    })
+  }
 }

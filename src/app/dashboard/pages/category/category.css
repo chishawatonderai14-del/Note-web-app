@@ -17,7 +17,18 @@
     display: flex;
     gap: 10%;
     flex-wrap: wrap;
+    animation: open 1.3s ease forwards;
+}
 
+@keyframes open {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .category-item {
     display: flex;
@@ -38,6 +49,10 @@
     border-radius: 50%;
     padding: 3px 15px;
 }
+.category-icon img {
+    width: 25px;
+    height: 50px;
+}
 .category-count {
     display: flex;
     justify-content: center;
@@ -49,10 +64,7 @@
     margin-top: 5px;
     font-weight: 500;
 }
-.category-icon img {
-    width: 25px;
-    height: 50px;
-}
+
 .shopping-icon {
     background-color: #E4F9EF;
 }

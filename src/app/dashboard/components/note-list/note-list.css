@@ -1,4 +1,4 @@
-.note-list{
+.note-list {
     display: flex;
     flex-direction: column;
     scrollbar-width: none;
@@ -9,7 +9,21 @@
     flex: 1;
     width: 100%;
     gap: 10px;
+
+    animation: open 1.3s ease forwards;
 }
+
+@keyframes open {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 h3 {
     font-family: inter;
     font-weight: 600;

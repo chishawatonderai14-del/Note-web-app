@@ -16,7 +16,7 @@
     border-radius: 14px;
 
 }
-.left-section .icon img{
+.left-section .icon .icon-svg{
     width: 25px;
     height: 50px;
 }
@@ -32,9 +32,7 @@
     align-items: flex-end;
     font-size: 12px;
 }
-.right-right img {
-    width: 20px;
-}
+
 .category {
     font-size: 13px;
     font-weight: 500;

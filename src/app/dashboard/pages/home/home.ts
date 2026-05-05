@@ -6,7 +6,7 @@ import { AddNote } from "../../components/add-note/add-note";
 
 @Component({
   selector: 'app-home',
-  imports: [Heading, NavBar, NoteList, AddNote],
+  imports: [Heading, NavBar, NoteList],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

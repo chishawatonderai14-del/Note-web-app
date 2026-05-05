@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'category',
         loadComponent: () => 
           import('./pages/category/category').then((m) => m.Category)
+      },
+      {
+        path: 'activity',
+        loadComponent: () => 
+          import('./pages/activity/activity').then((m) => m.Activity)
       }
     ]
   }

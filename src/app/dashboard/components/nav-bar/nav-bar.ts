@@ -20,4 +20,19 @@ export class NavBar implements OnInit{
       this.noteService.updateNoteState(nav);
     }
   }
+  getTransform() {
+    switch (this.value) {
+      case 'all notes':
+        return 'translateX(0%)';
+
+      case 'favourites':
+        return 'translateX(102%)'; // include gap
+
+      case 'trash':
+        return 'translateX(204%)';
+
+      default:
+        return 'translateX(0%)';
+    }
+  }
 }

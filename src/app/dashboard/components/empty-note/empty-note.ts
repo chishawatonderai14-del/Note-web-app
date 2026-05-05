@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { NoteService } from '../../services/note-service';
 import { CommonModule } from '@angular/common';
 
@@ -10,10 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './empty-note.css',
 })
 export class EmptyNote {
-  constructor(){
-    this.message$;
-    console.log(this.message$);
+  @Input() message = {
+    heading: 'No notes yet!',
+    text: 'Start by creating you first note.'
   }
-  noteService = inject(NoteService);
-  message$ = this.noteService.currentStateMsg$;
 }
