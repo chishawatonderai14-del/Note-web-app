@@ -1,17 +1,72 @@
 .activity {
     display: flex;
-    padding: 20px; 
+    padding: 20px;
     flex-direction: column;
     flex: 1;
+    font-family: inter;
+
+}
+.activity-item{
+    display: grid;
+    grid-template-columns: 22% 55% 23%;
+    padding: 3px;
+    font-size: 16px;
+    position: relative;
+}
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 3px;
 }
 .activity-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    padding: 3px 15px;
+    padding: 14px;
+    background-color: #F1E8FF;
 }
-.activity-icon img {
-    width: 25px;
-    height: 50px;
+
+.activity-list {
+    margin-top: 25px;
+}
+.activity-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.day {
+    font-size: 15px;
+    color: #4a4a53;
+    margin-bottom: 15px;
+}
+.textBody {
+    color: #4D4E5E;
+    font-size: 14px;
+}
+.date {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    color: #4D4E5E;
+}
+.activity-item {
+    border-left: 2px solid #ededed;
+    height: 85px;
+}
+.circle{
+    position: absolute;
+    left: -2.5%;
+    top: 41%;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: #ededed;
+}
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ededed;
+    margin-bottom: 20px;
 }

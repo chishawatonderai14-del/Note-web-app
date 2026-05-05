@@ -8,5 +8,4 @@ import { Heading } from "../../components/heading/heading";
   styleUrl: './activity.css',
 })
 export class Activity {
-
 }
