@@ -2,6 +2,7 @@
 export interface NoteRequestType {
     title: string;
     content: string;
+    pinned: boolean;
     category: string;
 }
 export interface NoteType{

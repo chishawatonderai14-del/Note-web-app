@@ -18,6 +18,7 @@ export class AddNoteModel {
   note : NoteRequestType = {
     title: '',
     content: 'Work',
+    pinned: false,
     category: ''
   }
   addNote(){

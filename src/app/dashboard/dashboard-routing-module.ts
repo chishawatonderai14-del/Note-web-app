@@ -26,6 +26,11 @@ const routes: Routes = [
         path: 'activity',
         loadComponent: () => 
           import('./pages/activity/activity').then((m) => m.Activity)
+      },
+      {
+        path: 'add-note',
+        loadComponent: () => 
+          import('./pages/addNote/add-note-model').then((m) => m.AddNoteModel)
       }
     ]
   }
