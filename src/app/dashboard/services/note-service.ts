@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { categoryResponseType, categoryType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
+import { ActivityBigType, ActivityResponseType, ActivityType, categoryResponseType, categoryType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
 import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
@@ -273,5 +273,33 @@ export class NoteService {
       //console.log("IT IS NOT THIS YEAR");
       return false;
     }
+  }
+  sortActivity(activityList: ActivityType[]){
+    let returnList: ActivityBigType[] = [];
+    // change the events dates 
+    activityList = this.sortEventDates(activityList);
+    for (const activity of activityList){
+        let found = false;
+        for (let i = 0; i < returnList.length; i++){
+            if(activity.timestamp == returnList[i].date || (activity.timestamp.length == 5 && returnList[i].date.length == 5 ) ){
+                returnList[i].events.push(activity);
+                found = true;
+                break;
+            }
+        }
+        if (!found){
+          const dateVar: ActivityBigType = {date: activity.timestamp, events: [activity]};
+          returnList.push(dateVar);
+        }
+    }
+    return returnList;
+  }
+  sortEventDates(eventList: ActivityType[]){
+    return eventList.map(item =>({...item, timestamp: this.formatNoteTime(item.timestamp)}));
+  }
+  getActivities(){
+    return this.http.get<ActivityResponseType>(`${this.apiUrl}/get-activities`).pipe(
+      map(activityR => this.sortActivity(activityR.activities))
+    )
   }
 }

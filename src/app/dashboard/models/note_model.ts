@@ -1,3 +1,4 @@
+
 export interface NoteRequestType {
     title: string;
     content: string;
@@ -40,4 +41,18 @@ export interface categoryType {
 export interface categoryResponseType {
     message: string;
     categories: categoryType[];
+}
+export interface ActivityBigType{
+    date: string;
+    events: ActivityType[];
+}
+export interface ActivityType{
+    timestamp: string;
+    icon: string;
+    action: string;
+    textBody: string;
+}
+export interface ActivityResponseType{
+    message: string;
+    activities: ActivityType[];
 }

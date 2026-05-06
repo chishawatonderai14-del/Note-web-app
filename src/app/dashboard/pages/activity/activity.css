@@ -25,7 +25,6 @@
     align-items: center;
     border-radius: 50%;
     padding: 14px;
-    background-color: #F1E8FF;
 }
 
 .activity-list {
@@ -69,4 +68,19 @@ hr {
     height: 1px;
     background-color: #ededed;
     margin-bottom: 20px;
+}
+.create {
+    background-color: red;
+}
+.edit {
+    background-color: #F1E8FF;
+}
+.create {
+    background-color: #E4F9EF;
+}
+.delete {
+    background-color: #FEEDEF;
+}
+.favourite {
+    background-color: #FEF9E9;
 }
