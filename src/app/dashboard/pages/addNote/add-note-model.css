@@ -4,46 +4,101 @@
     background-color: #fff;
     flex-direction: column;
     font-family: inter;
-    padding: 35px 20px;
+    padding: 10px 20px;
     position: relative;
     font-size: 12px;
     height: 100vh;
-    z-index: 1100;
+    z-index: 6;
 }
 .heading{
     display: flex;
-    justify-content: center;
+    padding: 0 0 12px 0;
+    align-items: center;
+    gap: 30%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(235, 235, 235);
 }
-.close {
-    position: absolute;
-    right: 5%;
-    top: 5%;
+.right-heading {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px
+}
+.delete, .save-note, .live-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.live-save {
+    gap: 5px;
+    margin-right: 25px;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.delete {
+    padding: 9px 13px;
+    border-radius: 8px;
+}
+.delete img{
+    width: 20px;
+}
+.pin, .favourite, .category, .delete {
+    box-shadow: 0 0 4px rgb(215, 215, 215);
+}
+.save-note{
+    padding: 10px;
+    border-radius: 8px;
+    background-color:#6F3FBF;
+    box-shadow: 0 0 4px #703fbfbf;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    height: 100%;
+}
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.icon {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 50%;
+    background-color: #F1E8FF;
 }
 .form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    gap: 10px;
+    margin-top: 10px;
 }
-.form input, textarea {
-    border: 1px solid #ccc;
-    border-radius: 5px;    
+.form input {
+    border: none; 
     font-family: inter;
-    outline: none;  
-    padding: 10px;
+    outline: none;
+    padding: 0;
+    font-weight: 300;
+    font-size: 25px;
     width: 100%;
-    
 }
-.form textarea {
-    height: 150px;
-    resize: none;
+
+.form input{
+    height: 40px;
+    font-weight: 600;
 }
-.form .input::placeholder {
+.form input::placeholder {
     font-family: inter;
-    font-weight: 400;
-    color: #999;
+    font-weight: 600;
+    color: rgb(150, 148, 148);
 }
-button {
+/*button {
     display: flex;
     background-color: #4F46E5;
     justify-content: center;
@@ -58,4 +113,100 @@ button {
     color: #fff;
     width: 100%;
     gap: 8px;
+}*/
+.quick-actions {
+    display: flex;
+    margin-top: 12px;
+    justify-content: space-between;
+}
+.pin, .favourite, .category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 13px;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 2px;
+    border-radius: 8px;
+}
+.pin img, .favourite img, .category img {
+    width: 16px;
+}
+.dropdown {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown img{
+    width: 12px;
+}
+quill-editor {
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    height: 400px; 
+}
+
+::ng-deep .ql-toolbar {
+    border-radius: 16px 16px 0 0;
+}
+
+::ng-deep .ql-container {
+    border-radius:  0;
+    background: white;
+    min-height: 250px;
+    padding: 1px;
+}
+
+::ng-deep .ql-editor {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #222;
+    padding: 10px;
+}
+.bottom {
+    display: flex;
+    border: 1px solid rgb(212, 212, 212);
+    border-top: none;
+    height: 50px;
+    border-radius: 0 0 16px 16px ;
+    background-color: #FBFBFB;
+    justify-content: space-between;
+    padding: 12px;
+}
+.words, .characters, .fullscreen {
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.saved {
+    background-color: green;
+    transition: all 0.2s ease-in;
+    animation: changeColor 0.3s;
+}
+.unsaved {
+    background-color: red;
+    transition: all 0.2s ease;
+    animation: changeColor 0.3s;
+}
+.add-something {
+    border: 1px solid #6F3FBF;
+}
+.error {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    padding: 12px;
+    gap: 5px;
+    margin-top: 3px;
+    border: 2px solid red;
+}
+.error img{
+    width: 20px;
 }

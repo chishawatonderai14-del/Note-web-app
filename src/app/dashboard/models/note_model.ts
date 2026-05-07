@@ -3,6 +3,7 @@ export interface NoteRequestType {
     title: string;
     content: string;
     pinned: boolean;
+    favourite: boolean;
     category: string;
 }
 export interface NoteType{
@@ -11,6 +12,7 @@ export interface NoteType{
     content: string;
     icon: string;
     pinned: boolean;
+    favourite: boolean;
     trash: boolean;
     category: string;
     createdAt: string;
@@ -27,7 +29,14 @@ export interface pinNoteType {
     noteId: number;
     pinned: boolean;
 }
+export interface addFavType {
+    noteId: number;
+    favourite: boolean;
+}
 export interface pinNoteResponseType {
+    message: string;
+}
+export interface addFavResponseType {
     message: string;
 }
 export interface EmptyStateMessageType {
@@ -38,6 +47,16 @@ export interface categoryType {
     icon: string;
     category: string;
     noteCount: number;
+}
+export interface categType {
+    id: number;
+    name: string;
+    icon: string;
+    createdAt: Date;
+}
+export interface categResponseType {
+    message: string;
+    categories: categType[];
 }
 export interface categoryResponseType {
     message: string;

@@ -1,6 +1,6 @@
 import { Component, DestroyRef, ElementRef, EventEmitter, inject, OnInit, ViewChild } from '@angular/core';
 import { NgClass } from "@angular/common";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
@@ -10,7 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './bottom-nav.css',
 })
 export class BottomNav implements OnInit{
-  constructor(private noteService: NoteService){}
+  constructor(private noteService: NoteService, private route : ActivatedRoute){}
   private destroyRef = inject(DestroyRef);
   ngOnInit(): void {
     const img = new Image();
@@ -18,11 +18,15 @@ export class BottomNav implements OnInit{
     img.onload = () => {
       console.log("image loaded");
     }
-    this.noteService.loadPage();
-    this.noteService.currentPage$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      this.page = res;
-      this.router.navigate([`/dashboard/${this.page}`]);
-    });
+    const other = this.route.snapshot.paramMap.get('id');
+    console.log(other);
+    if(!other){
+      this.noteService.loadPage();
+      this.noteService.currentPage$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+        this.page = res;
+        this.router.navigate([`/dashboard/${this.page}`]);
+      });
+    }
   }
   private router = inject(Router);
   close$ = new EventEmitter<any>();

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivityBigType, ActivityResponseType, ActivityType, categoryResponseType, categoryType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
+import { ActivityBigType, ActivityResponseType, ActivityType, addFavResponseType, addFavType, categoryResponseType, categoryType, categResponseType, categType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
 import { BehaviorSubject, combineLatest, filter, map } from 'rxjs';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { BottomNav } from '../components/bottom-nav/bottom-nav';
+import { DisplayMsg } from '../components/display-msg/display-msg';
 
 
 @Injectable({
@@ -18,9 +19,13 @@ export class NoteService {
   private apiUrl = 'http://192.168.200.166:3004/api';
   private notes = new BehaviorSubject<NoteType[]>([]);
   private noteState = new BehaviorSubject<string>('');
+  private categ = new BehaviorSubject<categType[]>([]);
   private stateMsg = new BehaviorSubject<EmptyStateMessageType>({heading: "No notes yet!", text: 'Start by creating you first note.'});
   private page = new BehaviorSubject<string>('home');
   private categories = new BehaviorSubject<categoryType[]>([]);
+  private stateNote = new BehaviorSubject<number>(-1);
+  currentId$ = this.stateNote.asObservable();
+  currentCateg$ = this.categ.asObservable();
   currentCategories$ = this.categories.asObservable();
   currentPage$ = this.page.asObservable();
   currentStateMsg$ = this.stateMsg.asObservable();
@@ -32,7 +37,7 @@ export class NoteService {
     map(([notes, state]) => {
       switch(state) {
         case 'favourites':
-          return notes.filter(note => note.pinned);
+          return notes.filter(note => note.favourite);
         case 'trash':
           return notes.filter(note => note.trash);
         case 'all notes':
@@ -41,6 +46,29 @@ export class NoteService {
       }
     })
   );
+  loadId(){
+    const id = localStorage.getItem('noteId')
+    const send = parseInt(id || '-1');
+    this.stateNote.next(send);
+  }
+  setId(id: number){
+    this.stateNote.next(id);
+    localStorage.setItem('noteId', `${id}`);
+  }
+  sendMessage(message: string, event: string){
+    this.overlayRef = this.overlay.create({
+      positionStrategy: this.overlay.position()
+      .global()
+      .top('5px')
+      .centerHorizontally()
+    });
+    const componentRef = this.overlayRef.attach(new ComponentPortal(DisplayMsg));
+    componentRef.instance.getMsg(message, event);
+    componentRef.instance.close$.subscribe((res) => {
+      console.log(res);
+      this.overlayRef.detach();
+    });
+  }
   openMenu() {
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
@@ -63,15 +91,31 @@ export class NoteService {
       this.categories.next(res.categories);
     });
   }
+  loadcateg(){
+    this.getCateg().subscribe(res => {
+      this.categ.next(res.categories);
+      localStorage.setItem('categ', JSON.stringify(this.categ.getValue()));
+    })
+  }
+  loadUnseen(){
+    if (this.notes.getValue().length == 0){
+      this.notes.next(JSON.parse(localStorage.getItem('notes') || "[]"));
+    }
+    if (this.categ.getValue().length == 0){
+      this.categ.next(JSON.parse(localStorage.getItem('categ')|| '[]'));
+    }
+  }
   loadNotes() {
     console.log("LOAD NOTES CALLED;");
     this.loadPage();
     this.getNoteState();
     this.loadCategories();
+    this.loadcateg();
     console.time("API");
     this.getNotes().subscribe((data) => {
       console.timeEnd('API');
-      this.notes.next(data.notes)
+      this.notes.next(data.notes);
+      localStorage.setItem('notes', JSON.stringify(this.notes.getValue()));
     });
   }
   private getNoteState(){
@@ -100,13 +144,20 @@ export class NoteService {
    }
 
   deleteNote(id: string){
-    return this.http.delete<NoteResponseType>(`${this.apiUrl}/delete-note/${id}`);
+    return this.http.delete<NoteResponseType>(`${this.apiUrl}/delete-note/${parseInt(id)}`);
   }
   formatContent(content: string){
+    content = this.getTextContent(content);
     if(content.length > 28){
       content = content.slice(0, 28);
       content += "...";
     }
+    return content;
+  }
+  getTextContent(content: string): string {
+    const div = document.createElement('div');
+    div.innerHTML = content;
+    content = div.innerText;
     return content;
   }
   pinNote(note: pinNoteType){
@@ -115,6 +166,13 @@ export class NoteService {
       map(res => res?.message)
     ).subscribe();
   }
+  addFav(note: addFavType){
+    this.notes.next(this.notes.getValue().map(n => parseInt(n.id) === note.noteId? {...n, favourite: !note.favourite} : n));
+    return this.http.put<addFavResponseType>(`${this.apiUrl}/add-fav`, note).pipe(
+      map(res => res?.message)
+    );
+  }
+  
   getStateMessage(state: string){
     switch(state){
       case 'favourites':
@@ -132,14 +190,23 @@ export class NoteService {
   getCategories(){
     return this.http.get<categoryResponseType>(`${this.apiUrl}/get-categories`);
   }
+  getCateg(){
+    return this.http.get<categResponseType>(`${this.apiUrl}/get-categ`);
+  }
+
   setPage(page: string){
     this.page.next(page);
     localStorage.setItem('page', page);
   }
   loadPage(){
-    let page = localStorage.getItem('page');
-    if (!page) page = 'home';
-    this.page.next(page);
+    if (this.stateNote.getValue() == -1){
+      let page = localStorage.getItem('page');
+      if (!page) page = 'home';
+      this.page.next(page);
+    }else {
+      this.loadId();
+      this.loadcateg();
+    }
   }
   private chooseTimeRepresantation(isTime: boolean, date: string){
     const dateList = date.split('T');
@@ -301,5 +368,13 @@ export class NoteService {
     return this.http.get<ActivityResponseType>(`${this.apiUrl}/get-activities`).pipe(
       map(activityR => this.sortActivity(activityR.activities))
     )
+  }
+  getNote(id: string){
+    this.loadUnseen();
+    const note = this.notes.getValue().filter(note => note.id == id);
+    return note[0];
+  }
+  updateNote(note: NoteType){
+    this.http.put<NoteResponseType>(`${this.apiUrl}/update-note`, note).subscribe()
   }
 }

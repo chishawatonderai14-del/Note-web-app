@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { categoryType } from '../../models/note_model';
+import { categoryType, categType } from '../../models/note_model';
 import { NoteService } from '../../services/note-service';
 import { CommonModule } from "@angular/common";
 import { Heading } from '../../components/heading/heading';
@@ -22,6 +22,6 @@ export class Category implements OnInit{
   categoryHelper(){
     this.noteService.currentCategories$.subscribe(res => {
       this.categories = res;
-    })
+    });
   }
 }

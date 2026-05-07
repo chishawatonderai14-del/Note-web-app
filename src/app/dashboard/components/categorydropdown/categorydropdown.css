@@ -1,0 +1,22 @@
+.category-overlay {
+    padding: 12px 4px;
+    width: 129px;
+    background-color: white;
+    box-shadow: 0 0 4px rgb(227, 227, 227);
+}
+.category {
+    font-family: inter;
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgb(227, 227, 227);
+    padding: 8px;
+
+}
+.active {
+    background-color: #6F3FBF;
+    color: white;
+}

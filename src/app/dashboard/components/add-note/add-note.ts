@@ -37,6 +37,6 @@ export class AddNote {
   private router = inject(Router);
   addNote(){
    //should navigate
-   this.router.navigate(['/dashboard/add-note']);
+   this.router.navigate(['/dashboard/add-note/-1']);
   }
 }

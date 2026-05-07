@@ -1,0 +1,7 @@
+<div class="category-overlay">
+    <div class="category-list" *ngFor="let categoryVar of categories">
+        <div class="category" (click)="close(categoryVar.name)" [ngClass]="{'active' : categoryVar.name == category}">
+            <p>{{categoryVar.name}}</p>
+        </div>
+    </div>
+</div>

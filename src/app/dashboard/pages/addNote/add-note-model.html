@@ -1,19 +1,71 @@
-<div class="add-note">
+<div class="add-note" >
     <div class="heading">
-        <h2>Add New Note</h2> 
         <div class="close" (click)="close()">
-            <img src="/assets/x.svg" > 
-        </div>    
-    </div>
-    <div class="form" >
-        <div class="input">
-            <input type="text" placeholder="Heading" [(ngModel)]="note.title">
+            <img src="/assets/back.svg" width="28">
         </div>
-       <div class="input">
-         <textarea name="note" placeholder="Write your note..." [(ngModel)]="note.content"></textarea>
-       </div>
-       <button (click)="addNote()">
-            <img src="/assets/plus.svg" > Add Note
-        </button>
+        <div class="right-heading" >
+            <div class="live-save">
+                <div class="circle" [ngClass]="{'saved': saved == true, unsaved: saved == false}">
+
+                </div>
+                Saved
+            </div>
+            <div class="delete" (click)="delete(note.id)">
+                <img src="assets/trash.svg">
+            </div>
+            <div class="save-note" (click)="save()">
+                Save
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="title">
+            <div class="icon">
+                <img src="assets/note-add.svg" width=" 38">
+            </div>
+            <div class="input">
+                <input
+                type="text"
+                placeholder="Untitled Note"
+                (ngModelChange)="unsaved()"
+                [(ngModel)]="note.title" [ngClass]="{'noColor': note.title == 'Untitled Note'}">
+                <p>Tap to add a title</p>
+            </div>
+        </div>
+        <div class="quick-actions">
+            <div class="pin" [ngClass]="{'add-something' : note.pinned == true}" (click)="pin()">
+                <img src="assets/pin.svg" width="28">
+                <p>Pin note</p>
+            </div>
+            <div class="favourite" [ngClass]="{'add-something' : note.favourite == true}" (click)="favourite()">
+                <img src="assets/favourite.svg">
+                <p>favourite</p>
+            </div>
+            <div class="category" #categoryBtn [ngClass]="{'add-something' : note.category != ''}" (click)="chooseCategory(categoryBtn)">
+                <img src="assets/category.svg" width="28">
+                <p>Category</p>
+                <div class="dropdown"><img src="assets/dropdown.svg"></div>
+            </div>
+        </div>
+        <quill-editor (onContentChanged)="unsaved()"
+            [(ngModel)]="note.content"
+            placeholder="Insert Text Here"
+            [modules]="quillConfig"
+            >
+        </quill-editor>
+        <div class="bottom">
+            <div class="words">
+                <img src="assets/word.svg" width="20">
+                <p> 0 words</p>
+            </div>
+            <div class="characters">
+                <img src="assets/characters.svg" width="20">
+                <p> 0 characters</p>
+            </div>
+            <div class="fullscreen">
+                <img src="assets/fullscreen.svg" width="20">
+            </div>
+        </div>
     </div>
 </div>

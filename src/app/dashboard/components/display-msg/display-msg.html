@@ -1,4 +1,16 @@
-<div class="msg-body">
-    <img src="/assets/success.svg" width="20">
-    <p>{{msg}}</p>
+<div class="msg-body" [ngClass]="icon">
+    <div class="event">
+        <img src="assets/{{icon}}.svg" width="20">
+    </div>
+    <div class="close" (click)="close()">
+        <img src="assets/x.svg">
+    </div>
+    <div class="msg">
+        <div class="msg-heading">
+            {{event}}
+        </div>
+        <div>
+            <p>{{msg}}</p>
+        </div>
+    </div>
 </div>

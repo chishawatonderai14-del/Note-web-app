@@ -1,12 +1,40 @@
 .msg-body {
     display: flex;
+    font-family: inter;
     background-color: white;
-    gap: 10px;
-    box-shadow: 0 0 4px #ddffe0;
+    gap: 12px;
+    box-shadow: 0 0 4px #c6c7c6;
     padding: 10px 14px;
-    border-radius: 24px;
+    height: 80px;
+    width: 90vw;
+    border-radius: 12px;
+    position: relative;
 }
 .msg-body p {
     font-family: inter;
     font-size: 14px;
+}
+.msg-heading {
+    font-size: 15px;
+    font-weight: 600;
+}
+.event img {
+    width: 28px;
+}
+.event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+.success {
+    border-left: 3px solid green;
+}
+.error {
+    border-left: 3px solid red;
 }

@@ -1,36 +1,40 @@
 <div class="activity">
     <app-heading [heading]="'Activities'"></app-heading>
-    <div class="activity-list">
-        <div *ngFor="let activityB of activities;">
-            <div *ngIf="activityB.date.length == 5">
-                <h2 class="day">Today</h2>
-            </div>
-            <div *ngIf="activityB.date.length != 5">
-                <h2 class="day">{{ activityB.date }}</h2>
-            </div>
-            <div *ngFor="let activity of activityB.events;">
-                <div class="activity-item">
-                    <div class="icon">
-                        <div class="activity-icon" [ngClass]="activity.icon">
-                            <img src="assets/{{activity.icon}}.svg" width="24">
+    @if(!empty){
+        <div class="activity-list">
+            <div *ngFor="let activityB of activities;">
+                <div *ngIf="activityB.date.length == 5">
+                    <h2 class="day">Today</h2>
+                </div>
+                <div *ngIf="activityB.date.length != 5">
+                    <h2 class="day">{{ activityB.date }}</h2>
+                </div>
+                <div *ngFor="let activity of activityB.events;">
+                    <div class="activity-item">
+                        <div class="icon">
+                            <div class="activity-icon" [ngClass]="activity.icon">
+                                <img src="assets/{{activity.icon}}.svg" width="24">
+                            </div>
                         </div>
-                    </div>
-                    <div class="activity-details">
-                        <div class="heading">
-                            <h4>{{activity.action}}</h4>
+                        <div class="activity-details">
+                            <div class="heading">
+                                <h4>{{activity.action}}</h4>
+                            </div>
+                            <div class="textBody">
+                                <p>{{activity.textBody}}</p>
+                            </div>
                         </div>
-                        <div class="textBody">
-                            <p>{{activity.textBody}}</p>
+                        <div class="date">
+                            <p>{{activity.timestamp}}</p>
                         </div>
-                    </div>
-                    <div class="date">
-                        <p>{{activity.timestamp}}</p>
-                    </div>
-                    <div class="circle">
+                        <div class="circle">
+                        </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
         </div>
-    </div>
+    }@else {
+        <app-empty-note [message]="{heading: 'No Activity yet!', text: 'Start by doing something'}"></app-empty-note>
+    }
 </div>

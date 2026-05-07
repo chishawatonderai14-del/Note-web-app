@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="right-section">
-        <div class="right-left">
+        <div class="right-left" (click)="openNote()">
             <div>
                 <app-note-heading [heading]="note.title"></app-note-heading>
                 <app-note-content [data]="content"></app-note-content>
@@ -19,10 +19,10 @@
             </div>
         </div>
         <div class="right-right">
-            @if(note.pinned){
-                <img src="/assets/favourite.svg" (click)="pin()" >
+            @if(note.favourite){
+                <img src="/assets/favourite.svg" (click)="favourite()" >
             }@else {
-                <img src="/assets/star.svg" (click)="pin()" >
+                <img src="/assets/star.svg" (click)="favourite()" >
             }
             <p>{{time}}</p>
         </div>
