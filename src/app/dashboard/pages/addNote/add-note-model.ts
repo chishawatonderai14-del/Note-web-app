@@ -115,11 +115,8 @@ export class AddNoteModel implements OnInit{
       this.noteService.deleteNote(id).subscribe(res => {
         console.log(res);
       });
-      this.noteService.loadNotes();
-      this.router.navigate(['/dashboard/home']);
-    }else{
-      this.router.navigate(['/dashboard/home']);
     }
+    this.close();
   }
   close(){
     this.noteService.loadNotes(); 
