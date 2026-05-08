@@ -33,6 +33,16 @@ const routes: Routes = [
           import('./pages/addNote/add-note-model').then((m) => m.AddNoteModel)
       }
     ]
+  },
+  {
+    path: 'profile',
+    loadComponent: () => 
+      import('./pages/profile/profile').then((m) => m.Profile)
+  },
+  {
+    path: 'edit-profile',
+    loadComponent: () => 
+      import('./pages/editprofile/editprofile').then(m => m.Editprofile)
   }
 ];
 

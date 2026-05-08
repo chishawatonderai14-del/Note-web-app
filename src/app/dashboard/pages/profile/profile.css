@@ -1,0 +1,145 @@
+.profile{
+    height: 93vh;
+    padding: 20px;
+    background-color: #FEFDFD;
+    transition: all 1.0s ease;
+}
+.profile-user{
+    margin-top: 10px;
+    display: flex;
+    font-family: inter;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #F2EFFA;
+    border-radius: 10px;
+    background-color: #FAF8FD;
+}
+.edit-profile{
+    margin-top: 12px;
+    border: 1px solid #D5C6F7;
+    justify-self: flex-start;
+    width: fit-content;
+    padding: 8px 10px ;
+    border-radius: 8px;
+    color: #6F3FBF;
+    font-size: 13px;
+    font-weight: 500;
+}
+.profile-img {
+    align-self: flex-start;
+    width: fit-content;
+    height: fit-content;
+}
+.profile-img img{
+    border-radius: 56%;
+}
+.email {
+    font-size: 13px;
+    color: #4D4E5E;
+}
+.name {
+    font-weight: 900;
+}
+.tabs, .about, .help, .upload, .cloud, .security, .moon, .notifications, .tab{
+    display: flex;
+    align-items: center;
+    font-family: inter;
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid #F4F4F8;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 8px 4px;
+    gap: 8px;
+    position: relative;
+}
+.tabs img {
+    width: 32px;
+}
+.operations, .logout{
+    margin-top: 12px;
+}
+.about {
+    border-radius: 12px;
+    padding: 14px 10px;
+}
+.about, .help {
+    gap: 14px;
+}
+.upload {
+    border-radius: 12px;
+}
+.help, .upload, .cloud, .security, .moon, .notifications, .tab {
+    padding: 10px 9px;
+    gap: 13px;
+}
+.help img,.upload img, .cloud img, .security img, .moon img, .about img, .notifications img{
+    width: 23px;
+}
+.logout {
+    color: red;
+    border: none;
+    border: 1px solid #F4F4F8;
+    border-bottom: none;
+    border-radius: 12px;
+}
+.tab img {
+    width: 28px;
+    border-radius: 12px;
+}
+
+.right-icon {
+    position: absolute;
+    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    right: 10px;
+}
+.right-icon img{
+    width: 8px;
+}
+.operations {
+    border: 1px solid #F4F4F8;
+    border-bottom: none;
+    border-radius: 12px;
+}
+.moon {
+    justify-content: space-between;
+}
+.left-p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.dark-mode {
+    align-self: flex-end;
+    right: 0px;
+    background-color: #E9E9EF;
+    width: 72px;
+    height: 25px;
+    border-radius: 224px;
+    position: relative;
+    transition: all 1.0s ease;
+    box-shadow: 0 0 2px rgb(32, 32, 32) inset;
+}
+.circle {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    background-color: #FDFCFD;
+    width: 23px;
+    height: 23px;
+    border-radius: 100%;
+    box-shadow: 0 0 1px white;
+    transition: all 1.0s ease;
+}
+.after {
+    transform: translateX(200%);
+    background-color: #4D4E5E;
+    box-shadow: 0 0 2px rgb(32, 32, 32) ;
+}
+.colors {
+    background-color: #FDFCFD;
+    box-shadow: 0 0 4px rgb(188, 188, 188) inset;
+}

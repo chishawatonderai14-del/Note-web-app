@@ -10,7 +10,11 @@ import { NoteService } from '../../services/note-service';
 })
 export class Heading {
   constructor(private noteService: NoteService){}
-  @Input() heading!: string;
+  @Input() headingData = {
+    heading: "",
+    searchPresent: false
+  };
+
   openMenu(){
     this.noteService.openMenu();
   }

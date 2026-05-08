@@ -1,4 +1,4 @@
-import { Component, DestroyRef, ElementRef, EventEmitter, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, DestroyRef, ElementRef, EventEmitter, inject, OnInit, Output, ViewChild } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note-service';
@@ -17,7 +17,7 @@ export class BottomNav implements OnInit{
     img.src = "/assets/boy.webp";
     img.onload = () => {
       console.log("image loaded");
-    }
+    } 
     const other = this.route.snapshot.paramMap.get('id');
     console.log(other);
     if(!other){

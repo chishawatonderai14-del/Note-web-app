@@ -13,7 +13,10 @@ import { SearchBar } from '../../components/search-bar/search-bar';
 })
 export class Category implements OnInit{
   constructor(private noteService: NoteService){}
-  title : string = "Categories";
+  headingInfo = {
+    heading: "Categories",
+    searchPresent: false
+  };
   searchValue = "Search categories...";
   ngOnInit(): void {
     this.categoryHelper();

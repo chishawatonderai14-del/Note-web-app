@@ -11,5 +11,7 @@ import { AddNote } from "../../components/add-note/add-note";
   styleUrl: './home.css',
 })
 export class Home {
-  value : string = "NoteApp";
+  value  = {
+    heading: "NoteApp", 
+    searchPresent: true};
 }

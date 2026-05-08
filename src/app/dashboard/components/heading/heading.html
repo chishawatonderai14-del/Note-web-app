@@ -1,5 +1,11 @@
 <div class="heading">
     <img src="/assets/menu_v2.svg" alt="menu" (click)="openMenu()">
-    <h4>{{heading}}</h4>
-    <img src="/assets/search.svg" alt="menu">
+    <h4>{{headingData.heading}}</h4>
+    @if(headingData.searchPresent){
+        <img src="/assets/search.svg" alt="menu">
+    }@else {
+        <div>
+            
+        </div>
+    }
 </div>

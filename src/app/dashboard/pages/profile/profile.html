@@ -1,0 +1,89 @@
+<div class="profile">
+    <app-heading [headingData]="headingInfo"></app-heading>
+    <div class="profile-user">
+        <div class="profile-img">
+            <img src="/assets/boy.webp" width="60">
+        </div>
+        <div class="details">
+            <div class="name">
+                Tonderai
+            </div>
+            <div class="email">
+                chishawatonderai14@gmail.com
+            </div>
+            <div class="edit-profile" (click)="navigate('edit-profile')">
+                <p>Edit Profile</p>
+            </div>
+        </div>
+    </div>
+    <div class="operations">
+        <div class="tabs">
+            <img src="assets/settings.svg"> 
+            <p>Settings</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+        <div class="notifications">
+            <img src="assets/bell.svg"> 
+            <p>Notifications</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+        <div class="moon">
+            <div class="left-p">
+                <img src="assets/moon.svg"> 
+                <p>Dark Mode</p>
+            </div>
+            <div class="dark-mode" (click)="enterDarkMode()" [ngClass]="{'colors': darkMode}">
+                <div class="circle" [ngClass]="{'after': darkMode}">
+
+                </div>
+            </div>
+        </div>
+        <div class="security">
+            <img src="assets/shield.svg"> 
+            <p>Privacy & Security</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+        <div class="cloud">
+            <img src="assets/cloud.svg"> 
+            <p>Backup & Sync</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+        <div class="upload">
+            <img src="assets/upload.svg"> 
+            <p>Export Notes</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+    </div>
+    <div class="operations">
+        <div class="help">
+            <img src="assets/help.svg"> 
+            <p>Help & Support</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+        <div class="about">
+            <img src="assets/about.svg"> 
+            <p>About App</p>
+            <div class="right-icon">
+                <img src="assets/right.svg">
+            </div>
+        </div>
+    </div>
+    <div class="logout">
+        <div class="tab">
+            <img src="assets/logout.svg"> 
+            <p>Logout</p>
+        </div>  
+    </div>
+</div>

@@ -11,36 +11,34 @@
                 Tonderai
             </div>
             <div class="email">
-                chishawatonderai14@gmail.com
+                chishawatonderai14@gmail.com 
             </div>
         </div>
     </div>
-    <div class="note-tab tab" (click)="navigate('home')" [ngClass]="{'active': this.page == 'home'}">
-        <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.5 7.5V12.5M30 7.5V12.5M37.5 7.5V12.5M32.5 22.5H22.5M37.5 32.5H22.5M20.5 52.5H39.5C42.3003 52.5 43.7005 52.5 44.77 51.955C45.7108 51.4757 46.4757 50.7108 46.955 49.77C47.5 48.7005 47.5 47.3002 47.5 44.5V18C47.5 15.1997 47.5 13.7996 46.955 12.7301C46.4757 11.7892 45.7108 11.0243 44.77 10.545C43.7005 10 42.3003 10 39.5 10H20.5C17.6997 10 16.2996 10 15.2301 10.545C14.2892 11.0243 13.5243 11.7892 13.045 12.7301C12.5 13.7996 12.5 15.1997 12.5 18V44.5C12.5 47.3002 12.5 48.7005 13.045 49.77C13.5243 50.7108 14.2892 51.4757 15.2301 51.955C16.2996 52.5 17.6997 52.5 20.5 52.5Z" stroke="#3C3D4E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h4>Notes</h4>
-    </div>
-    <div class="category-tab tab" (click)="navigate('category')" [ngClass]="{'active': this.page == 'category'}">
-        <svg width="25" height="25" viewBox="0 0 65 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M62.5 50.5C62.5 52.0913 61.8679 53.6174 60.7426 54.7426C59.6174 55.8679 58.0913 56.5 56.5 56.5H8.5C6.9087 56.5 5.38258 55.8679 4.25736 54.7426C3.13214 53.6174 2.5 52.0913 2.5 50.5V8.5C2.5 6.9087 3.13214 5.38258 4.25736 4.25736C5.38258 3.13214 6.9087 2.5 8.5 2.5H23.5L29.5 11.5H56.5C58.0913 11.5 59.6174 12.1321 60.7426 13.2574C61.8679 14.3826 62.5 15.9087 62.5 17.5V50.5Z" stroke="#3C3D4E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="0.496094" y1="22.5" x2="64.5039" y2="22.5" stroke="#3C3D4E" stroke-width="5"/>
-        </svg>
-         <h4>Categories</h4>
-    </div>
-    <div class="activity-tab tab" (click)="navigate('activity')" [ngClass]="{'active': this.page == 'activity'}">
-        <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 17.5V30L36.25 33.75M52.5 30C52.5 42.4265 42.4265 52.5 30 52.5C17.5736 52.5 7.5 42.4265 7.5 30C7.5 17.5736 17.5736 7.5 30 7.5C42.4265 7.5 52.5 17.5736 52.5 30Z" stroke="#3C3D4E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-         <h4>Activity</h4>
-    </div>
-    <div class="more-tab tab" (click)="navigate('profile')" [ngClass]="{'active': this.page == 'profile'}">
-        <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M20.4 30C20.4 32.6511 18.251 34.8 15.6 34.8C12.9491 34.8 10.8 32.6511 10.8 30C10.8 27.349 12.9491 25.2 15.6 25.2C16.8731 25.2 18.094 25.7057 18.9942 26.6059C19.8943 27.5062 20.4 28.7271 20.4 30Z" stroke="#3C3D4E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M34.8 30C34.8 32.6511 32.651 34.8 30 34.8C27.3489 34.8 25.2 32.6511 25.2 30C25.2 27.349 27.3489 25.2 30 25.2C32.651 25.2 34.8 27.349 34.8 30Z" stroke="#3C3D4E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.2 30C49.2 32.6511 47.051 34.8 44.4 34.8C41.7489 34.8 39.6 32.6511 39.6 30C39.6 27.349 41.7489 25.2 44.4 25.2C47.051 25.2 49.2 27.349 49.2 30Z" stroke="#3C3D4E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h4>Profile</h4>
+    <div class="tabs">
+        <div class="note-tab tab" (click)="navigate('home')" [ngClass]="{'active': this.page == 'home'}">
+            <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.5 7.5V12.5M30 7.5V12.5M37.5 7.5V12.5M32.5 22.5H22.5M37.5 32.5H22.5M20.5 52.5H39.5C42.3003 52.5 43.7005 52.5 44.77 51.955C45.7108 51.4757 46.4757 50.7108 46.955 49.77C47.5 48.7005 47.5 47.3002 47.5 44.5V18C47.5 15.1997 47.5 13.7996 46.955 12.7301C46.4757 11.7892 45.7108 11.0243 44.77 10.545C43.7005 10 42.3003 10 39.5 10H20.5C17.6997 10 16.2996 10 15.2301 10.545C14.2892 11.0243 13.5243 11.7892 13.045 12.7301C12.5 13.7996 12.5 15.1997 12.5 18V44.5C12.5 47.3002 12.5 48.7005 13.045 49.77C13.5243 50.7108 14.2892 51.4757 15.2301 51.955C16.2996 52.5 17.6997 52.5 20.5 52.5Z" stroke="#3C3D4E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h4>Notes</h4>
+        </div>
+        <div class="category-tab tab" (click)="navigate('category')" [ngClass]="{'active': this.page == 'category'}">
+            <svg width="25" height="25" viewBox="0 0 65 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M62.5 50.5C62.5 52.0913 61.8679 53.6174 60.7426 54.7426C59.6174 55.8679 58.0913 56.5 56.5 56.5H8.5C6.9087 56.5 5.38258 55.8679 4.25736 54.7426C3.13214 53.6174 2.5 52.0913 2.5 50.5V8.5C2.5 6.9087 3.13214 5.38258 4.25736 4.25736C5.38258 3.13214 6.9087 2.5 8.5 2.5H23.5L29.5 11.5H56.5C58.0913 11.5 59.6174 12.1321 60.7426 13.2574C61.8679 14.3826 62.5 15.9087 62.5 17.5V50.5Z" stroke="#3C3D4E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="0.496094" y1="22.5" x2="64.5039" y2="22.5" stroke="#3C3D4E" stroke-width="6"/>
+            </svg>
+            <h4>Categories</h4>
+        </div>
+        <div class="activity-tab tab" (click)="navigate('activity')" [ngClass]="{'active': this.page == 'activity'}">
+            <svg width="28" height="28" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 17.5V30L36.25 33.75M52.5 30C52.5 42.4265 42.4265 52.5 30 52.5C17.5736 52.5 7.5 42.4265 7.5 30C7.5 17.5736 17.5736 7.5 30 7.5C42.4265 7.5 52.5 17.5736 52.5 30Z" stroke="#3C3D4E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h4>Activity</h4>
+        </div>
+        <div class="more-tab tab" (click)="navigate('profile')" [ngClass]="{'active': this.page == 'profile'}">
+            <img src="assets/profile.svg" width="28">
+            <h4>Profile</h4>
+        </div>
     </div>
     <hr/>
     <div class="tab2" (click)="navigate('settings')" [ngClass]="{'active': this.page == 'setting'}">

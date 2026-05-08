@@ -1,5 +1,5 @@
 <div class="activity">
-    <app-heading [heading]="'Activities'"></app-heading>
+    <app-heading [headingData]="{heading: 'Activities', searchPresent: false}"></app-heading>
     @if(empty){
         <div class="activity-list">
             <div *ngFor="let activityB of activities;">
