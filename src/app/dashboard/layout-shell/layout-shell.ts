@@ -5,7 +5,7 @@ import { BottomNav } from "../components/bottom-nav/bottom-nav";
 @Component({
   selector: 'app-layout-shell',
   standalone: true,
-  imports: [DashboardRoutingModule, AddNote, BottomNav],
+  imports: [DashboardRoutingModule, AddNote],
   templateUrl: './layout-shell.html',
   styleUrl: './layout-shell.css',
 })

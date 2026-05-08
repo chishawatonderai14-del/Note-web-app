@@ -4,7 +4,7 @@ import { Otherheading } from "../../components/otherheading/otherheading";
 
 @Component({
   selector: 'app-editprofile',
-  imports: [Heading, Otherheading],
+  imports: [ Otherheading],
   templateUrl: './editprofile.html',
   styleUrl: './editprofile.css',
 })

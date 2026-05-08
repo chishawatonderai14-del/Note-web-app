@@ -4,7 +4,7 @@ import { Otherheading } from "../../components/otherheading/otherheading";
 
 @Component({
   selector: 'app-privacypage',
-  imports: [Heading, Otherheading],
+  imports: [ Otherheading],
   templateUrl: './privacypage.html',
   styleUrl: './privacypage.css',
 })
