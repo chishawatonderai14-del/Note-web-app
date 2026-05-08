@@ -26,9 +26,15 @@ export class AddNoteModel implements OnInit{
       const value = this.route.snapshot.paramMap.get('id');
       const id = parseInt(value || "-1");
       if (String(id) != "-1"){
-        this.note = this.noteService.getNote(String(id));
+        const temp = this.noteService.getNote(String(id));
+        if (temp != 'note'){
+          this.note = temp;
+        }
+      }else{
+        this.reInit();
       }
     }
+    console.log(this.note);
   }
   temp: any;
   overlayRef!: OverlayRef;
@@ -78,7 +84,7 @@ export class AddNoteModel implements OnInit{
     }
   }
   justCheck(){
-    this.noteService.loadId();
+    this.noteService.loadUnseen();
     this.noteService.currentId$.subscribe(res => {
       this.temp = res;
     })

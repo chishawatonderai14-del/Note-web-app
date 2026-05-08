@@ -55,19 +55,25 @@ export class NoteService {
     this.stateNote.next(id);
     localStorage.setItem('noteId', `${id}`);
   }
+  sendMessageAvailable: boolean = true;
   sendMessage(message: string, event: string){
-    this.overlayRef = this.overlay.create({
-      positionStrategy: this.overlay.position()
-      .global()
-      .top('5px')
-      .centerHorizontally()
-    });
-    const componentRef = this.overlayRef.attach(new ComponentPortal(DisplayMsg));
-    componentRef.instance.getMsg(message, event);
-    componentRef.instance.close$.subscribe((res) => {
-      console.log(res);
-      this.overlayRef.detach();
-    });
+    
+    if(this.sendMessageAvailable){
+      this.sendMessageAvailable = false;
+      this.overlayRef = this.overlay.create({
+        positionStrategy: this.overlay.position()
+        .global()
+        .top('5px')
+        .centerHorizontally()
+      });
+      const componentRef = this.overlayRef.attach(new ComponentPortal(DisplayMsg));
+      componentRef.instance.getMsg(message, event);
+      componentRef.instance.close$.subscribe((res) => {
+        console.log(res);
+        this.sendMessageAvailable = true;
+        this.overlayRef.dispose();
+      });
+    }
   }
   openMenu() {
     this.overlayRef = this.overlay.create({
@@ -371,8 +377,13 @@ export class NoteService {
   }
   getNote(id: string){
     this.loadUnseen();
-    const note = this.notes.getValue().filter(note => note.id == id);
-    return note[0];
+    for (let i = 0; i < this.notes.getValue().length; i++){
+      const note = this.notes.getValue();
+      if (note[i].id == id){
+        return note[i];
+      }
+    }
+    return "note";
   }
   updateNote(note: NoteType){
     this.http.put<NoteResponseType>(`${this.apiUrl}/update-note`, note).subscribe()

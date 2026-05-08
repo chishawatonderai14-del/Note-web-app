@@ -1,11 +1,36 @@
+.activity-list {
+    scrollbar-width: none;
+    padding-bottom: 55px;
+    margin-top: 10px;
+    max-height: 95vh;
+    overflow-y: auto;
+    flex: 1;
+    animation: open 1.3s ease forwards;
+}
 .activity {
     display: flex;
     padding: 20px;
     flex-direction: column;
     flex: 1;
     font-family: inter;
-
 }
+@keyframes open {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h3 {
+    font-family: inter;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
 .activity-item{
     display: grid;
     grid-template-columns: 22% 55% 23%;
@@ -78,7 +103,7 @@ hr {
 .create {
     background-color: #E4F9EF;
 }
-.delete {
+.trash {
     background-color: #FEEDEF;
 }
 .favourite {

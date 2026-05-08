@@ -34,8 +34,7 @@ export class BottomNav implements OnInit{
   page!: string;
   navigate(page: string){
     this.noteService.setPage(page);
-    this.router.navigate([`/dashboard/${page}`]);
-    this.close$.next('Event Emitted successfully');
+    this.close();
   }
 
   close() {
@@ -47,6 +46,7 @@ export class BottomNav implements OnInit{
     setTimeout(() => {
       console.log('NOW EMITTING CLOSE');
       this.close$.emit('Event emitted from the x icon');
+      if(this.page) this.router.navigate([`/dashboard/${this.page}`]);
     }, 150); // match animation duration
   }
 }

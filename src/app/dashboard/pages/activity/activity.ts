@@ -20,7 +20,8 @@ export class Activity implements OnInit{
     if(this.activities.length != 0){
       this.empty = false;
     }
+  
   }
   empty = true;
-  activities!: ActivityBigType[];
+  activities: ActivityBigType[] = [];
 }

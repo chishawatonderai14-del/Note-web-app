@@ -1,6 +1,6 @@
 <div class="activity">
     <app-heading [heading]="'Activities'"></app-heading>
-    @if(!empty){
+    @if(empty){
         <div class="activity-list">
             <div *ngFor="let activityB of activities;">
                 <div *ngIf="activityB.date.length == 5">
