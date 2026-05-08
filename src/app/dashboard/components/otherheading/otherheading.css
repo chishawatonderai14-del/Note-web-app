@@ -1,0 +1,14 @@
+.heading-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inter;
+}
+.heading-top h4 {
+    color: #6F3FBF;
+    font-size: 20px;
+    font-weight: 600;
+}
+.heading-top img {
+    width: 28px;
+}

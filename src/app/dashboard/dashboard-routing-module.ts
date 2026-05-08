@@ -43,6 +43,16 @@ const routes: Routes = [
     path: 'edit-profile',
     loadComponent: () => 
       import('./pages/editprofile/editprofile').then(m => m.Editprofile)
+  },
+  {
+    path: 'privacy-security',
+    loadComponent: () => 
+      import('./pages/privacypage/privacypage').then(m => m.Privacypage)
+  },
+  {
+    path: 'about',
+    loadComponent: () => 
+      import('./pages/about/about').then(m => m.About)
   }
 ];
 

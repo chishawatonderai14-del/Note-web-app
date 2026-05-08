@@ -3,14 +3,14 @@ import { Heading } from "../../components/heading/heading";
 import { Otherheading } from "../../components/otherheading/otherheading";
 
 @Component({
-  selector: 'app-editprofile',
+  selector: 'app-privacypage',
   imports: [Heading, Otherheading],
-  templateUrl: './editprofile.html',
-  styleUrl: './editprofile.css',
+  templateUrl: './privacypage.html',
+  styleUrl: './privacypage.css',
 })
-export class Editprofile {
+export class Privacypage {
   headingInfo = {
-    heading: "Edit Profile",
+    heading: "Privacy & Security",
     searchPresent: false
   }
 }
