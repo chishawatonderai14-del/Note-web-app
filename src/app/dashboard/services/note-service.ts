@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivityBigType, ActivityResponseType, ActivityType, addFavResponseType, addFavType, categoryResponseType, categoryType, categResponseType, categType, EmptyStateMessageType, NoteRequestType, NoteType, pinNoteResponseType, pinNoteType } from '../models/note_model';
 import { NotesResponseType } from '../models/note_model';
 import { NoteResponseType } from '../models/note_model';
@@ -8,6 +8,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { BottomNav } from '../components/bottom-nav/bottom-nav';
 import { DisplayMsg } from '../components/display-msg/display-msg';
+import { AuthService } from '../../auth/services/auth-service';
 
 
 @Injectable({
@@ -24,6 +25,7 @@ export class NoteService {
   private page = new BehaviorSubject<string>('home');
   private categories = new BehaviorSubject<categoryType[]>([]);
   private stateNote = new BehaviorSubject<number>(-1);
+  private authService = inject(AuthService);
   currentId$ = this.stateNote.asObservable();
   currentCateg$ = this.categ.asObservable();
   currentCategories$ = this.categories.asObservable();
@@ -37,10 +39,11 @@ export class NoteService {
     map(([notes, state]) => {
       switch(state) {
         case 'favourites':
-          return notes.filter(note => note.favourite);
+          return notes.filter(note => note.favourite && !note.trash);
         case 'trash':
           return notes.filter(note => note.trash);
         case 'all notes':
+          return notes.filter(notes => !notes.trash);
         default: 
           return notes;
       }
@@ -142,7 +145,7 @@ export class NoteService {
     localStorage.setItem('noteState', noteState);
   }
   private getNotes() {
-    return this.http.get<NotesResponseType>(`${this.apiUrl}/get-notes`);
+    return this.http.get<NotesResponseType>(`${this.apiUrl}/get-notes/${this.authService.getUserId()}`);
   }
   
   createNote(note: NoteRequestType){
@@ -194,7 +197,7 @@ export class NoteService {
     this.stateMsg.next(this.getStateMessage(this.noteState.getValue()));
   }
   getCategories(){
-    return this.http.get<categoryResponseType>(`${this.apiUrl}/get-categories`);
+    return this.http.get<categoryResponseType>(`${this.apiUrl}/get-categories/${this.authService.getUserId()}`);
   }
   getCateg(){
     return this.http.get<categResponseType>(`${this.apiUrl}/get-categ`);

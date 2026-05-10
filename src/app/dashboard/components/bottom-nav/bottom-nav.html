@@ -8,10 +8,10 @@
         </div>
         <div class="details">
             <div class="name">
-                Tonderai
+                {{name}}
             </div>
             <div class="email">
-                chishawatonderai14@gmail.com 
+                {{email}} 
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <h4>Notes</h4>
         </div>
         <div class="category-tab tab" (click)="navigate('category')" [ngClass]="{'active': this.page == 'category'}">
-            <svg width="25" height="25" viewBox="0 0 65 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="22" height="22" viewBox="0 0 65 59" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M62.5 50.5C62.5 52.0913 61.8679 53.6174 60.7426 54.7426C59.6174 55.8679 58.0913 56.5 56.5 56.5H8.5C6.9087 56.5 5.38258 55.8679 4.25736 54.7426C3.13214 53.6174 2.5 52.0913 2.5 50.5V8.5C2.5 6.9087 3.13214 5.38258 4.25736 4.25736C5.38258 3.13214 6.9087 2.5 8.5 2.5H23.5L29.5 11.5H56.5C58.0913 11.5 59.6174 12.1321 60.7426 13.2574C61.8679 14.3826 62.5 15.9087 62.5 17.5V50.5Z" stroke="#3C3D4E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             <line x1="0.496094" y1="22.5" x2="64.5039" y2="22.5" stroke="#3C3D4E" stroke-width="6"/>
             </svg>
@@ -50,7 +50,7 @@
         <h4>Help & Support</h4>
     </div>
     <hr>
-    <div class="tab" (click)="navigate('auth/login')">
+    <div class="tab" (click)="logout()" >
         <img src="assets/logout.svg" width="28">
         <h4 class="logout">Logout</h4>
     </div>

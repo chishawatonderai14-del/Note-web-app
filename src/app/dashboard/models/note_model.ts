@@ -12,6 +12,7 @@ export interface NoteType{
     content: string;
     icon: string;
     pinned: boolean;
+    userId: number;
     favourite: boolean;
     trash: boolean;
     category: string;

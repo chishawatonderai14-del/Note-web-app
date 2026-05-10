@@ -3,6 +3,8 @@ import { NgClass } from "@angular/common";
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { J } from '@angular/cdk/keycodes';
+import { AuthService } from '../../../auth/services/auth-service';
 @Component({
   selector: 'app-bottom-nav',
   imports: [NgClass],
@@ -12,6 +14,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class BottomNav implements OnInit{
   constructor(private noteService: NoteService, private route : ActivatedRoute){}
   private destroyRef = inject(DestroyRef);
+  private authService = inject(AuthService);
   ngOnInit(): void {
     const img = new Image();
     img.src = "/assets/boy.webp";
@@ -28,6 +31,8 @@ export class BottomNav implements OnInit{
       });
     }
   }
+  name: string = this.authService.getName() || '';
+  email: string = this.authService.getEmail() || '' ;
   private router = inject(Router);
   close$ = new EventEmitter<any>();
   @ViewChild('bottomNav') panel!: ElementRef;
@@ -36,7 +41,10 @@ export class BottomNav implements OnInit{
     this.noteService.setPage(page);
     this.close();
   }
-
+  logout(){
+    this.authService.logout();
+    this.close$.emit('close');
+  }
   close() {
     console.log("CLOSED");
     const el = this.panel.nativeElement as HTMLElement;

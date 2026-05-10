@@ -26,13 +26,13 @@ const routes: Routes = [
         path: 'activity',
         loadComponent: () => 
           import('./pages/activity/activity').then((m) => m.Activity)
-      },
-      {
-        path: 'add-note/:id',
-        loadComponent: () => 
-          import('./pages/addNote/add-note-model').then((m) => m.AddNoteModel)
       }
     ]
+  },
+  {
+    path: 'add-note/:id',
+    loadComponent: () => 
+      import('./pages/addNote/add-note-model').then((m) => m.AddNoteModel)
   },
   {
     path: 'profile',

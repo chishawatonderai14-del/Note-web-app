@@ -1,0 +1,121 @@
+<div class="login" [ngClass]="{'removeBlink': removeBlink}">
+    <div class="heading"> 
+        <img src="assets/note-icon.png" alt="nto" width="150">
+        <h2>Create Account</h2>
+        <p>Sign up to start managing you notes</p>
+    </div>
+    <div class="form">
+        <div class="inputs">
+            <label>Full Name</label>
+            <div class="email" [ngClass]="{'validInput': name.valid && name.touched}">
+                <input type="text" name="name" placeholder="Enter your full name" #name="ngModel" [(ngModel)]="signupData.name" required>
+                <div class="icon">
+                    <svg width="20" height="29" viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 27.4499C35.7679 27.4499 40.4438 22.7741 40.4438 17.0062C40.4438 11.2383 35.7679 6.56244 30 6.56244C24.2321 6.56244 19.5563 11.2383 19.5563 17.0062C19.5563 22.7741 24.2321 27.4499 30 27.4499Z" stroke="#8F93A1" stroke-width="5"/>
+                    <path d="M51.1406 57.2969C51.1406 51.69 48.9133 46.3128 44.9487 42.3482C40.984 38.3836 35.6068 36.1563 30 36.1562C24.3932 36.1563 19.016 38.3836 15.0513 42.3482C11.0867 46.3128 8.85938 51.69 8.85938 57.2969H51.1406Z" stroke="#8F93A1" stroke-width="5"/>
+                    </svg>
+                </div>
+                @if (name.invalid && name.touched){
+                    <div class="error-icon" [ngClass]="{'animate-error-icon': name.invalid && name.touched}">
+                        <img src="assets/error.svg" width="20">
+                    </div>
+                }@else if(name.valid && name.touched) {
+                    <div class="success-icon">
+                        <img src="assets/success.svg" width="32">
+                    </div>
+                }
+            </div>
+            @if (name.invalid && name.touched){
+                <div class="error-message">
+                    <p>Please Enter your name!!</p>
+                </div>
+            }
+        </div>
+        <div class="inputs">
+            <label>Email</label>
+            <div class="email" [ngClass]="{'validInput': email.valid && email.touched}">
+                <input type="email" name="email" placeholder="Enter your email" #email="ngModel" [(ngModel)]="signupData.email" required>
+                <div class="icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 6L12 13L2 6" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                @if (email.invalid && email.touched){
+                    <div class="error-icon" [ngClass]="{'animate-error-icon': email.invalid && email.touched}">
+                        <img src="assets/error.svg" width="20">
+                    </div>
+                }@else if(email.valid && email.touched) {
+                    <div class="success-icon">
+                        <img src="assets/success.svg" width="32">
+                    </div>
+                }
+            </div>
+            @if (email.invalid && email.touched){
+                <div class="error-message">
+                    <p>Please Enter your email!!</p>
+                </div>
+            }
+        </div>
+        <div class="inputs">
+            <label>Password</label>
+            <div class="password">
+                <input [type]="eye? 'text': 'password'" name="password" [(ngModel)]="signupData.password" #password="ngModel" placeholder="Create your password" required>
+                <div class="icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="eye" (click)="viewPassword()">
+                    @if(!eye){
+                        <img src="assets/eye-off.svg">
+                    }@else {
+                        <img src="assets/eye.svg">
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="inputs">
+            <label>Confirm Password</label>
+            <div class="password">
+                <input [type]="eye? 'text': 'password'" name="Cpassword" [(ngModel)]="confirmPassword" #Cpassword="ngModel" placeholder="Confirm your password" required>
+                <div class="icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="#8F93A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="eye" (click)="viewPassword()">
+                    @if(!eye){
+                        <img src="assets/eye-off.svg">
+                    }@else {
+                        <img src="assets/eye.svg">
+                    }
+                </div>
+                @if(!verifyPass() && Cpassword.touched){
+                    <div class="samePassword">
+                        <p>Passwords not the same!!</p>
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <div class="recovery">
+            <div class="remember-me">
+                <input type="checkbox">
+                <p>Remember me</p>
+            </div>
+            <div class="forgot-password">
+                <p>Forgot password?</p>
+            </div>
+        </div>
+        <div class="btn" >
+            <button class="submit" type="submit" [disabled]="email.invalid || password.invalid" [ngClass]="{'disabled' : email.invalid}" (click)="submit()">Login</button>
+        </div>
+    </div>
+    <div class="loading" *ngIf="load"><img src="assets/loader.svg" width="50">loading</div>
+    <div class="goSignup">
+        <p>Don't have an account? <a (click)="navigate()">login</a></p>
+    </div>
+</div>

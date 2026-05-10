@@ -1,0 +1,167 @@
+.login {
+    max-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    font-family: inter;
+    animation: create 400ms linear forwards;
+}
+@keyframes create {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
+.removeBlink {
+    display: none;
+    opacity: 0;
+}
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 42px;
+}
+.heading p {
+    font-size: 14px;
+    color: #787B8F;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.inputs input{
+    padding: 16px 14px 16px 50px;
+    width: 100%;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid #E7E9EC;
+    border-radius: 14px;
+}
+.email, .password {
+    position: relative;
+}
+.icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 0 16px;
+}
+.eye {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 0 12px 0 8px;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+.recovery, .remember-me {
+    display: flex;
+    align-items: center;
+}
+.recovery {
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.remember-me {
+    gap: 5px;
+}
+.remember-me input {
+    padding: 6px;
+}
+.forgot-password {
+    color: #8569E3;
+    font-weight: 500;
+    font-size: 14px;
+}
+.btn {
+    display: flex;
+    flex-direction: column;
+    height: 55px;
+}
+.btn button {
+    height: 100%;
+    background: linear-gradient(#8569E3, #856AE3);
+    border-radius: 12px;
+    font-size: 16px;
+}
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+.error-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 19px 0 12px;
+}
+
+.animate-error-icon {
+    animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.disable {
+    color: rgb(198, 198, 198);
+}
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.loading img {
+    animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+.goSignup {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.goSignup p{
+    color:#787B8F;
+}
+.goSignup a {
+    color: #8569E3;
+    font-weight: 600;
+}

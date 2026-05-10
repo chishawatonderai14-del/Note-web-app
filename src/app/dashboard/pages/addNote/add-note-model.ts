@@ -10,6 +10,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Categorydropdown } from '../../components/categorydropdown/categorydropdown';
 import { S } from '@angular/cdk/keycodes';
+import { AuthService } from '../../../auth/services/auth-service';
 
 @Component({
   selector: 'app-add-note-model',
@@ -20,6 +21,7 @@ import { S } from '@angular/cdk/keycodes';
 })
 export class AddNoteModel implements OnInit{
   constructor(private noteService: NoteService, private router: Router, private route: ActivatedRoute, private overlay : Overlay) {}
+  private authService = inject(AuthService);
   ngOnInit(): void {
     this.justCheck();
     if(parseInt(this.temp) == -1){
@@ -52,6 +54,7 @@ export class AddNoteModel implements OnInit{
     content: '',
     createdAt: '',
     updatedAt: '',
+    userId: this.authService.getUserId(),
     pinned: false,
     favourite: false,
     icon: '',
@@ -75,6 +78,7 @@ export class AddNoteModel implements OnInit{
       content: '',
       createdAt: '',
       updatedAt: '',
+      userId: this.authService.getUserId(),
       pinned: false,
       favourite: false,
       icon: '',
@@ -109,9 +113,11 @@ export class AddNoteModel implements OnInit{
     if (this.note.category == '' ) this.note.category = 'Personal';
     this.noteService.createNote(this.note).subscribe({ 
       next: (res) => {
+        this.note.id = res.note.id;
         this.noteService.loadNotes();
       },
       error: (err => {
+        console.log(this.authService.getUserId())
         console.log(err.message);
       })
     });
